@@ -1,5 +1,9 @@
 ## GANGA TODO LIST
 
+- Make it better than pia's ganga
+
+
+
 -Improve css
 -Make fonts be the same on every system
 -White links
