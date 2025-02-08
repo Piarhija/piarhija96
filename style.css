@@ -17,7 +17,7 @@ _____/\\\\\\\\\\\\______________________________________________________________
 html {background-color: #907777;}
 
 
-body {margin: 30px 30px; background:#fff;font-family:sans-serif;font-size:16px;overflow-x:hidden }
+body {margin: 0; background:#fff;font-family:sans-serif;font-size:16px;overflow-x:hidden }
 body > *, body main > *, main figure > div > *, main p, main q, main cite, main pre { margin-bottom:30px }
 body .right { float:right }
 body a.self, body a.parent { font-style:italic }

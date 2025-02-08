@@ -71,8 +71,21 @@ footy() {
 
 	echo "<span><a href="about.html">Piarhija</a> &copy;${letina} <a><i> Last change: ${datum} </i></a></span>"  >../inc/footer.htm;
 
-	
-
+}
+related() {
+   if [ -f "related.txt" ]; then
+                    # Read the content of related.txt and create a link
+                    relatedLinks=$(cat related.txt)
+                    linksMarkup="<div class='related-links'> <b>Related:</b> "
+                    # Loop through each link in related.txt
+                    IFS=',' read -ra LINKS <<< "$relatedLinks"
+                    for link in "${LINKS[@]}"; do
+                        link=$(echo "$link" | xargs)  # Remove any extra spaces
+                        linksMarkup+="<a href=\"$link.html\">$link </a>"
+                    done
+                    linksMarkup+="</div>"
+                    markup="$linksMarkup"
+                fi
 }
 
 # Setup topics
@@ -89,12 +102,20 @@ for f in *; do
 		markup=''
 		topPart=$(cat ../$headerA $meta ../$headerB);
 		nav=$(cat ../$sitenav);
-		contentText=$(cat $contentFile);
+		
+		
+		contentText=$(cat $contentFile $test);
 		footer=$(cat ../$foottop ../$foot ../$footbot);
 		closefile=$(cat ../$bottom);
-		mainContent="<main>${contentText}</main>";
-		sideBar="<aside>${markup}</aside>";
-		echo ${topPart}${nav}"${mainContent}"${sideBar}${footer}${closefile} > ../../../$site/${f}.html
+
+	
+		mainContent="<main>${contentText}";
+		related;
+		
+		
+
+		relatedmarkup="${markup}";
+		echo ${topPart}${nav}"${mainContent}"${relatedmarkup}${footer}${closefile} > ../../../$site/${f}.html
 		cd ..
 		tally=$((tally+1))
 	done
@@ -111,7 +132,7 @@ for f in *; do
 	footer=$(cat $foottop $foot $footbot);
 	closefile=$(cat $bottom);
 	mainContent="<main>${contentText}</main>";
-	sideBar="<aside>${markup}</aside>";
+	
 	echo ${topPart}${nav}"${mainContent}"${sideBar}${footer}${closefile} > ../../$site/${f}.html
 	cd ..
 done
