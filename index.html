@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='author' content='pia arhija'>
+	<meta name='description' content='piarhija website'/>
+	<meta name='keywords' content='pia, Piarhija, Pia Arhija, jarka' />
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	
+	<link rel='stylesheet' type='text/css' href='style.css'>
+
+	<noscript>
+		<meta http-equiv='refresh' content='0; url=site/home.html' />
+	</noscript>
+	
+	<title>PIARHIJA</title>
+</head>
+<body>
+	<main>
+		<p>click me <a href='site/home.html' target='_blank'>/home</a>.</p>
+	</main>
+  <script>
+	'use strict'
+
+	const filename = toFilename(window.location.hash || 'home')
+
+	window.location.replace(`./site/${filename}.html`)
+
+	function toFilename(str) {
+		return `${str}`.replace('#','').replace(/[\W_]+/g,"_").toLowerCase().trim()
+	}
+  </script>
+</body>
+</html>
