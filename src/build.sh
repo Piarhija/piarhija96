@@ -17,16 +17,17 @@ mkdir -p $site
 
 # List the index
 setupindex() {
-	echo "<h2>INDEX PAGE</h2>" > ../permanav/index/content.htm;
+	echo "" > ../permanav/index/content.htm;
 	for f in *; do #PREBERE MAPO PHOTOGRAPHY
-		echo "<h3>${f}</h3><div class="indexul"><ul>" >> ../permanav/index/content.htm;
+		#echo "<h3>${f}/</h3><ul>" >> ../permanav/index/content.htm;
+		echo "<ul>" >> ../permanav/index/content.htm;
 		cd $f;
 		for f in *; do #ZDAJ PREBERE PODMAPO PHOTOGRAPHY
 			clean_name="${f//_/ }" 
 			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/index/content.htm; ##IN GENERIRA LINK PODMAPE
 		done
 		cd ..
-		echo "</ul></div>" >> ../permanav/index/content.htm;
+		echo "</ul>" >> ../permanav/index/content.htm;
 	done
 	echo "Setup index -- DONE"
 }
@@ -72,7 +73,7 @@ footy() {
 	
 	#echo "<footer><a>Ganga 95© ${letina} </a> <a>Gangad: ${datum}</a></footer></main>" >../inc/footer.htm;
 
-	echo "<span><a href="about.html">Piarhija</a> &copy;${letina} <a><i> Last change: ${datum} </i></a></span>"  >../inc/footer.htm;
+	echo "<span><a><small>|MODIFIED: ${datum} </small></a>| <a href="index.html">index</a></span>"  >../inc/footer.htm;
 
 }
 related() {
@@ -84,7 +85,8 @@ related() {
         IFS=',' read -ra LINKS <<< "$relatedLinks"
         for link in "${LINKS[@]}"; do
             link=$(echo "$link" | xargs)  # Remove any extra spaces
-            linksMarkup+="<a href=\"$link.html\">$link</a> "  # Add a space after each link
+			clean_name="${link//_/ }" 
+            linksMarkup+="<a href=\"$link.html\">${clean_name}</a> "  # Add a space after each link
         done
         linksMarkup+="</div>"
         markup="$linksMarkup"
