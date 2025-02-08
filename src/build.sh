@@ -33,17 +33,17 @@ setupindex() {
 setupgungalarc() {
 	for f in *; do
 		categoryname=$f;
-		mkdir -p ../permanav/index_${categoryname}
-		echo "<ul>" > ../permanav/index_${categoryname}/content.htm
+		mkdir -p ../permanav/${categoryname}
+		echo "<ul>" > ../permanav/${categoryname}/content.htm
 		cd $f;
 		for f in *; do #ZDAJ GREV PODMAPO PHOTOGRAPHY
-			echo "<li><a href='${site}/${f}.html'>${f}</a></li>" >> ../../permanav/index_${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
+			echo "<li><a href='${site}/${f}.html'>${f}</a></li>" >> ../../permanav/${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
 		done
 		cd ..
-		echo "</ul>" >> ../permanav/index_${categoryname}/content.htm;
+		echo "</ul>" >> ../permanav/${categoryname}/content.htm;
 		#začasen metagen za index_F
-		echo "<title>ganga95 - index of "${categoryname}"</title> <meta name='description' content='index of "${categoryname}"' />
-" >../permanav/index_${categoryname}/meta.htm;
+		echo "<title>PIARHIJA - "${categoryname}"</title> <meta name='description' content='index of "${categoryname}"' />
+" >../permanav/${categoryname}/meta.htm;
 	echo "setup gungalarc -- DONE"
 	done
 }
@@ -53,7 +53,7 @@ sitenav() {
 	#echo "<li><a href='home.html'>/PIARHIJA</a></li>" >> ../inc/nav.htm;
 	for f in *; do
 		if [ $f != 'index' ]; then
-			echo "<li><a href='index_${f}.html'>${f}</a></li>" >>../inc/nav.htm;
+			echo "<li><a href='${f}.html'>${f}</a></li>" >>../inc/nav.htm;
 		fi
 	done
 	echo "<li><a href='index.html'>index</a></li>" >> ../inc/nav.htm;

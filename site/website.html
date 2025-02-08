@@ -1,0 +1,136 @@
+<!doctype html> <html lang='en'> <head> <meta charset='utf-8'> <meta name='viewport' content='width=device-width,initial-scale=1'> <link rel='stylesheet' type='text/css' href='../style.css'> <link rel="shortcut icon" type="image/png" href="../favicon.png"/> <title>PIARHIJA - website</title><meta name='description' content='PIARHIJA - webbysite' /> </head> <body><header><a href=home.html><img src=../assets/logosmoll.png></a></header><nav class='sitenav'><ul> <li><a href='audio.html'>audio</a></li> <li><a href='progamming.html'>progamming</a></li> <li><a href='visual.html'>visual</a></li> <li><a href='wiki.html'>wiki</a></li> <li><a href='index.html'>index</a></li> <li><a href='about.html'>about</a></li> </ul></nav><main>
+<h3>Website powered by GANGA95</h3>
+
+<p>This website is made with a static site generator that is based on <a target="_blank" href="https://git.sr.ht/~tendigits/10dsite"> [tendigits]</a><br> Another major source of inspiration was <a target="_blank" href="https://github.com/XXIIVV/oscean"> [XXIIVV]</a><br>
+The <a target="_blank" href="https://github.com/Piarhija/ganga95">[website code]</a> is under MIT License, <b>but images and my art is not!</b>. They are mine and will always be mine. 
+
+    </p>
+    
+    <pre class="language-sh"><code class="language-sh"></code>
+      #!/bin/sh -e
+site=../site
+content=content
+headerA=../../inc/header-top.htm
+headerB=../../inc/header-bottom.htm
+sitenav=../../inc/nav.htm
+meta=meta.htm
+contentFile=content.htm
+foottop=../../inc/footer-top.htm
+foot=../../inc/footer.htm
+footbot=../../inc/footer-bottom.htm
+bottom=../../inc/html-bottom.htm
+tally=0
+
+rm -rf $site
+mkdir -p $site
+
+# List the index
+setupindex() {
+	echo "&lt;h1>INDEX PAGE&lt;/h1>" > ../permanav/index/content.htm;
+	for f in *; do #PREBERE MAPO PHOTOGRAPHY
+		echo "&lt;h2>${f}&lt;/h2>&lt;ul>" >> ../permanav/index/content.htm;
+		cd $f;
+		for f in *; do #ZDAJ PREBERE PODMAPO PHOTOGRAPHY
+			echo "&lt;li>&lt;a href='${site}/${f}.html'>{${f}}&lt;/a>&lt;/li>" >> ../../permanav/index/content.htm; ##IN GENERIRA LINK PODMAPE
+		done
+		cd ..
+		echo "&lt;/ul>" >> ../permanav/index/content.htm;
+	done
+	echo "Setup index -- DONE"
+}
+
+setupgungalarc() {
+	for f in *; do
+		categoryname=$f;
+		mkdir -p ../permanav/index_${categoryname}
+		echo "&lt;ul>" > ../permanav/index_${categoryname}/content.htm
+		cd $f;
+		for f in *; do #ZDAJ GREV PODMAPO PHOTOGRAPHY
+			echo "&lt;li>&lt;a href='${site}/${f}.html'>${f}&lt;/a>&lt;/li>" >> ../../permanav/index_${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
+		done
+		cd ..
+		echo "&lt;/ul>" >> ../permanav/index_${categoryname}/content.htm;
+		#začasen metagen za index_F
+		echo "&lt;title>ganga95 - index of "${categoryname}"&lt;/title> &lt;meta name='description' content='index of "${categoryname}"' />
+" >../permanav/index_${categoryname}/meta.htm;
+	echo "setup gungalarc -- DONE"
+	done
+}
+
+sitenav() {
+	echo "&lt;nav class='sitenav'>" > ../inc/nav.htm;
+	echo "&lt;a href='home.html'>/PIARHIJA&lt;/a>" >> ../inc/nav.htm;
+	for f in *; do
+		if [ $f != 'index' ]; then
+			echo "&lt;a href='index_${f}.html'>/${f}&lt;/a>" >>../inc/nav.htm;
+		fi
+	done
+	echo "&lt;a href='index.html'>/INDEX&lt;/a>" >> ../inc/nav.htm;
+	echo "&lt;a href='about.html'>/ABOUT&lt;/a>" >> ../inc/nav.htm;
+	echo "&lt;/nav>" >> ../inc/nav.htm;
+	echo "nav"
+}
+
+
+footy() {
+	datum=$(date +%d-%m-%Y);
+	letina=$(date +%Y);
+	
+	#echo "&lt;footer>&lt;a>Ganga 95© ${letina} &lt;/a> &lt;a>Gangad: ${datum}&lt;/a>&lt;/footer>&lt;/main>" >../inc/footer.htm;
+
+	echo "&lt;span>&lt;a href="about.html">Piarhija&lt;/a> &copy; ${letina} &lt;a>&lt;i> Last change: ${datum} &lt;/i>&lt;/a>&lt;/span>"  >../inc/footer.htm;
+
+	
+
+}
+
+# Setup topics
+cd $content
+footy;
+sitenav;
+setupindex;
+setupgungalarc;
+
+for f in *; do
+	cd $f;
+	for f in *; do
+		cd $f;
+		markup=''
+		topPart=$(cat ../$headerA $meta ../$headerB);
+		nav=$(cat ../$sitenav);
+		contentText=$(cat $contentFile);
+		footer=$(cat ../$foottop ../$foot ../$footbot);
+		closefile=$(cat ../$bottom);
+		mainContent="&lt;main>${contentText}&lt;/main>";
+		sideBar="&lt;aside>${markup}&lt;/aside>";
+		echo ${topPart}${nav}"${mainContent}"${sideBar}${footer}${closefile} > ../../../$site/${f}.html
+		cd ..
+		tally=$((tally+1))
+	done
+	cd ..
+done
+cd ..
+cd permanav
+for f in *; do
+	cd $f;
+	markup=''
+	topPart=$(cat $headerA $meta $headerB);
+	nav=$(cat $sitenav);
+	contentText=$(cat $contentFile);
+	footer=$(cat $foottop $foot $footbot);
+	closefile=$(cat $bottom);
+	mainContent="&lt;main>${contentText}&lt;/main>";
+	sideBar="&lt;aside>${markup}&lt;/aside>";
+	echo ${topPart}${nav}"${mainContent}"${sideBar}${footer}${closefile} > ../../$site/${f}.html
+	cd ..
+done
+echo "${tally} topics built"
+
+
+
+
+    </pre>
+    <p>How it works: 
+		
+	</p>
+    <div class='related-links'> <b>Related:</b> <a href="wiki_notes.html">wiki_notes </a></div></main><footer> <!--<a href="https://jarka.si" rel="jarka" target="_blank"><img src="../assets/webring.svg" alt="JARKA"/></a> --> <span><a href=about.html>Piarhija</a> &copy;2025 <a><i> Last change: 08-02-2025 </i></a></span> <div class="right"> <a href="https://jarka.si" rel="jarka" target="_blank"><img src="../assets/jarka.png" alt="JARKA"/></a> </div> <hr/> </footer></body> </html>
