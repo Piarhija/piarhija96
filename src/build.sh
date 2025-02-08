@@ -75,7 +75,7 @@ footy() {
 	
 	#echo "<footer><a>Ganga 95© ${letina} </a> <a>Gangad: ${datum}</a></footer></main>" >../inc/footer.htm;
 
-	echo "<span><a><small>|MODIFIED: ${datum} </small></a>| <a href="index.html">index</a></span>"  >../inc/footer.htm;
+	echo "<span><a>|<small>MODIFIED: ${datum} </small></a>|"  >../inc/footer.htm;
 
 }
 related() {
