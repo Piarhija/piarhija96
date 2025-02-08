@@ -22,7 +22,8 @@ setupindex() {
 		echo "<h3>${f}</h3><div class="indexul"><ul>" >> ../permanav/index/content.htm;
 		cd $f;
 		for f in *; do #ZDAJ PREBERE PODMAPO PHOTOGRAPHY
-			echo "<li><a href='${site}/${f}.html'>${f}</a></li>" >> ../../permanav/index/content.htm; ##IN GENERIRA LINK PODMAPE
+			clean_name="${f//_/ }" 
+			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/index/content.htm; ##IN GENERIRA LINK PODMAPE
 		done
 		cd ..
 		echo "</ul></div>" >> ../permanav/index/content.htm;
@@ -37,7 +38,8 @@ setupgungalarc() {
 		echo "<ul>" > ../permanav/${categoryname}/content.htm
 		cd $f;
 		for f in *; do #ZDAJ GREV PODMAPO PHOTOGRAPHY
-			echo "<li><a href='${site}/${f}.html'>${f}</a></li>" >> ../../permanav/${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
+			clean_name="${f//_/ }"  # Remove underscores
+			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
 		done
 		cd ..
 		echo "</ul>" >> ../permanav/${categoryname}/content.htm;
@@ -53,7 +55,8 @@ sitenav() {
 	#echo "<li><a href='home.html'>/PIARHIJA</a></li>" >> ../inc/nav.htm;
 	for f in *; do
 		if [ $f != 'index' ]; then
-			echo "<li><a href='${f}.html'>${f}</a></li>" >>../inc/nav.htm;
+			clean_name="${f//_/ }" 
+			echo "<li><a href='${f}.html'>${clean_name}</a></li>" >>../inc/nav.htm;
 		fi
 	done
 	echo "<li><a href='index.html'>index</a></li>" >> ../inc/nav.htm;
