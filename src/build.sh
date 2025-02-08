@@ -17,10 +17,11 @@ mkdir -p $site
 
 # List the index
 setupindex() {
-	echo "" > ../permanav/index/content.htm;
+	echo "<div class="indexul">" > ../permanav/index/content.htm;
 	for f in *; do #PREBERE MAPO PHOTOGRAPHY
 		#echo "<h3>${f}/</h3><ul>" >> ../permanav/index/content.htm;
-		echo "<ul>" >> ../permanav/index/content.htm;
+		uppercase=$(echo "$f" | tr 'a-z' 'A-Z')
+		echo "<ul><h3>${uppercase}</h3>" >> ../permanav/index/content.htm;
 		cd $f;
 		for f in *; do #ZDAJ PREBERE PODMAPO PHOTOGRAPHY
 			clean_name="${f//_/ }" 
@@ -29,6 +30,7 @@ setupindex() {
 		cd ..
 		echo "</ul>" >> ../permanav/index/content.htm;
 	done
+	echo "</div>" >> ../permanav/index/content.htm;
 	echo "Setup index -- DONE"
 }
 
@@ -60,7 +62,7 @@ sitenav() {
 			echo "<li><a href='${f}.html'>${clean_name}</a></li>" >>../inc/nav.htm;
 		fi
 	done
-	echo "<li><a href='index.html'>index</a></li>" >> ../inc/nav.htm;
+	#echo "<li><a href='index.html'>index</a></li>" >> ../inc/nav.htm;
 	echo "<li><a href='about.html'>about</a></li>" >> ../inc/nav.htm;
 	echo "</ul></nav>" >> ../inc/nav.htm;
 	echo "nav"
@@ -68,7 +70,7 @@ sitenav() {
 
 
 footy() {
-	datum=$(date +%d-%m-%Y);
+	datum=$(date +" %R %d-%m-%Y");
 	letina=$(date +%Y);
 	
 	#echo "<footer><a>Ganga 95© ${letina} </a> <a>Gangad: ${datum}</a></footer></main>" >../inc/footer.htm;

@@ -50,7 +50,14 @@ main > ul > li a:visited:before, main > ul > li a:visited:after { color: #fff; }
 main > ul > li a:before { content: '{'; }
 main > ul > li a:after { content: '}'; }
 
-ul {display: inline-block;vertical-align: top;}
+.indexul {margin-left: -30px;}
+.indexul ul {display: inline-block;vertical-align: top; list-style: none;}
+.indexul li {margin-left: -10px;}
+
+.indexul > ul > li a:visited:before, .indexul > ul > li a:visited:after { color: #fff; }
+.indexul > ul > li a:before { content: '{'; }
+.indexul > ul > li a:after { content: '}'; }
+
 
 
 main ul li, main ol li { line-height:25px;padding:0 5px }
