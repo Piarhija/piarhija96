@@ -36,9 +36,9 @@ else
 	mkdir $slug;
 	cd $slug;
 	touch content.htm
-	echo "<h1>${name}</h1>" > content.htm
+	echo "<h3>${name}</h3>" > content.htm
 	touch meta.htm
-	echo "<title>${name}</title><meta name='description' content='${description}' />" > meta.htm
+	echo "<title>PIARHIJA - ${name}</title><meta name='description' content='${description}' />" > meta.htm
 	echo "$(date +%d-%m-%Y)" > date.txt
 	
 	touch related.txt;

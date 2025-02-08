@@ -73,20 +73,21 @@ footy() {
 
 }
 related() {
-   if [ -f "related.txt" ]; then
-                    # Read the content of related.txt and create a link
-                    relatedLinks=$(cat related.txt)
-                    linksMarkup="<div class='related-links'> <b>Related:</b> "
-                    # Loop through each link in related.txt
-                    IFS=',' read -ra LINKS <<< "$relatedLinks"
-                    for link in "${LINKS[@]}"; do
-                        link=$(echo "$link" | xargs)  # Remove any extra spaces
-                        linksMarkup+="<a href=\"$link.html\">$link </a>"
-                    done
-                    linksMarkup+="</div>"
-                    markup="$linksMarkup"
-                fi
+   if [ -f "related.txt" ] && [ -s "related.txt" ]; then
+        # Read the content of related.txt and create a link
+        relatedLinks=$(cat related.txt)
+        linksMarkup="<div class='related-links'> <b>Related:</b> "
+        # Loop through each link in related.txt
+        IFS=',' read -ra LINKS <<< "$relatedLinks"
+        for link in "${LINKS[@]}"; do
+            link=$(echo "$link" | xargs)  # Remove any extra spaces
+            linksMarkup+="<a href=\"$link.html\">$link</a> "  # Add a space after each link
+        done
+        linksMarkup+="</div>"
+        markup="$linksMarkup"
+    fi
 }
+
 
 # Setup topics
 cd $content
@@ -102,18 +103,11 @@ for f in *; do
 		markup=''
 		topPart=$(cat ../$headerA $meta ../$headerB);
 		nav=$(cat ../$sitenav);
-		
-		
 		contentText=$(cat $contentFile $test);
 		footer=$(cat ../$foottop ../$foot ../$footbot);
 		closefile=$(cat ../$bottom);
-
-	
 		mainContent="<main>${contentText}";
 		related;
-		
-		
-
 		relatedmarkup="${markup}";
 		echo ${topPart}${nav}"${mainContent}"${relatedmarkup}${footer}${closefile} > ../../../$site/${f}.html
 		cd ..
@@ -122,7 +116,7 @@ for f in *; do
 	cd ..
 done
 cd ..
-cd permanav
+cd permanav   #nardi .html fajle samo na bullshit v permanavu
 for f in *; do
 	cd $f;
 	markup=''
@@ -137,6 +131,7 @@ for f in *; do
 	cd ..
 done
 echo "${tally} topics built"
+echo "mijau mijau"
 
 
 
