@@ -11,5 +11,7 @@ ozadje pikice
 
 topic.sh nardi tudi twixt file ja, fuck rss
 
+- navbar spremeni nujno
+
 
 
