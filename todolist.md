@@ -11,7 +11,6 @@
 
 ozadje pikice
 
-topic.sh nardi tudi twixt file ja, fuck rss
 
 before and after {} samo za internal linke  in uni drugi za zunanje
 
