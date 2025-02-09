@@ -124,6 +124,7 @@ div.codeview pre a { float:right;color:#FFC0CB;text-decoration:none;font-weight:
 @media only screen and (max-width: 600px) {
 	
 	main {margin-right: 5px; margin-left: 5px;}
+	body {margin: 0;}
 	footer {margin-left: 5px; margin-right: 5px;}
 	header {margin-left: 0px;padding-left: 5px;}
   }
