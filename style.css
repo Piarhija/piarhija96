@@ -36,7 +36,16 @@ nav li{list-style-type: none;}
 nav a { padding:0 4px}
 main { margin-left:30px;margin-right:30px;max-width:824px;clear:both;position:relative }
 main a { text-decoration:underline }
-main a[target="_blank"] { text-decoration-style:solid }
+
+main a[target="_blank"] { text-decoration-style:solid;}
+
+main a[target="_blank"]:before { content: '['; } 
+main a[target="_blank"]:after { content: ']'; }  
+
+
+
+
+
 main article { border-left:1px dotted #000;padding-left:25px;clear:both }
 main cite { display:block;clear:both }
 main cite:before { content:"— " }
