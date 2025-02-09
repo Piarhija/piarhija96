@@ -42,6 +42,13 @@ else
 	echo "$(date +%d-%m-%Y)" > date.txt
 	
 	touch related.txt;
+
+	#twtxt
+	cd ../../../../ 
+	current_time=$(date +"%Y-%m-%dT%H:%M:%S"+01:00)
+	# Output the result
+	echo "${current_time}\t ${name}${description}" >> twtxt.txt
+
 fi
 
 
