@@ -111,8 +111,9 @@ lastpost() {
 
         sed -i '' '$d' "content.htm"  
 
+        clean_name="${last_post_content//_/ }" 
         # Append the new text
-         echo "<p>Latest post:<a href="${last_post_content}.html">${last_post_content}</a></p>" >> "content.htm"
+         echo "<p>Latest post:<a href="${last_post_content}.html">${clean_name}</a></p>" >> "content.htm"
         echo "Replaced the last line with new text in content.htm."
       else
         echo "'content.htm' does not exist in 'home' directory!"

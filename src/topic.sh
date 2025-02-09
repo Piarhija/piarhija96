@@ -50,7 +50,7 @@ else
 	echo "${current_time}\t ${name} ${description}" >> twtxt.txt
 	cd src/permanav/home;
 	
-	echo "${name}" >lastpost.txt
+	echo "${name// /_}" > lastpost.txt #write name, repalce space with _
 fi
 
 
