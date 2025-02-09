@@ -3,6 +3,8 @@
 -Design a beautiful logo
 -mascot (gungalarg shark)
 
+-pixel jarka logo 
+
 
 
 
