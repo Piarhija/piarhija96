@@ -47,7 +47,7 @@ else
 	cd ../../../../ 
 	current_time=$(date +"%Y-%m-%dT%H:%M:%S"+01:00)
 	# Output the result
-	echo "${current_time}\t ${name}${description}" >> twtxt.txt
+	echo "${current_time}\t ${name} ${description}" >> twtxt.txt
 
 fi
 

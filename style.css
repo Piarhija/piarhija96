@@ -18,7 +18,7 @@ Verdana, Geneva, Tahoma*/
 html {background-color: #907777;}
 
 
-body {margin: 10px; background:#fff;font-family: sans-serif; font-size:16px;overflow-x:hidden }
+body {margin: 0; background:#fff;font-family: sans-serif; font-size:16px;overflow-x:hidden }
 body > *, body main > *, main figure > div > *, main p, main q, main cite, main pre { margin-bottom:30px }
 body .right { float:right }
 body a.self, body a.parent { font-style:italic }
@@ -113,8 +113,10 @@ div.codeview pre a { float:right;color:#FFC0CB;text-decoration:none;font-weight:
 
 
 @media only screen and (max-width: 600px) {
-	body {margin: 1px 1px;}
+	
 	main {margin-right: 5px; margin-left: 5px;}
+	footer {margin-left: 5px; margin-right: 5px;}
+	header {margin-left: 0px;padding-left: 5px;}
   }
 
 
