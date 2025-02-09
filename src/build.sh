@@ -95,6 +95,41 @@ related() {
     fi
 }
 
+#!/bin/bash
+
+f="home"  # Set the folder name to "home"
+lastpost  # Call the function
+
+lastpost() {
+  if [ "$f" == "home" ]; then
+    if [ -d "home" ]; then
+      cd home || { echo "Failed to enter 'home' directory"; return 1; }
+
+        if [ -f "content.htm" ] && [ -f "lastpost.txt" ]; then
+        # This removes the last line
+        last_post_content=$(<lastpost.txt)
+
+        sed -i '' '$d' "content.htm"  
+
+        # Append the new text
+         echo "<p>Latest post:<a href="${last_post_content}.html">${last_post_content}</a></p>" >> "content.htm"
+        echo "Replaced the last line with new text in content.htm."
+      else
+        echo "'content.htm' does not exist in 'home' directory!"
+      fi
+
+      cd .. || { echo "Failed to go back to the parent directory"; return 1; }
+    else
+      echo "'home' directory does not exist!"
+    fi
+  else
+    echo "The folder '$f' is not 'home'. No action taken."
+  fi
+}
+
+
+
+
 
 # Setup topics
 cd $content
@@ -125,6 +160,7 @@ done
 cd ..
 cd permanav   #nardi .html fajle samo na bullshit v permanavu
 for f in *; do
+	lastpost;
 	cd $f;
 	markup=''
 	topPart=$(cat $headerA $meta $headerB);
