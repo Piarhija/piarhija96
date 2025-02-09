@@ -3,3 +3,10 @@ nick = piarhija
 2025-02-09T11:21:13+01:00	 aa
 2025-02-09T11:22:54+01:00	 twtxtnotes about how i twtxt
 2025-02-09T13:15:46+01:00	 abies plants in abies familly
+2025-02-09T14:31:18+01:00	 picea Picea plant familly descriptions
+2025-02-09T14:33:52+01:00	 pinus descriptions of pinus plant familly
+2025-02-09T14:34:09+01:00	 thuja descriptions of thuja plant familly
+2025-02-09T14:34:30+01:00	 acer descriptions of acer plant familly
+2025-02-09T14:35:22+01:00	 cedrus cedrus familly plant descriptions
+2025-02-09T14:36:14+01:00	 juniperus juniperus plant descriptions
+2025-02-09T14:37:11+01:00	 taxus descriptions of plants in taxus plant familly
