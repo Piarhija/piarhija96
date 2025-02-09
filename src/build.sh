@@ -18,14 +18,13 @@ mkdir -p $site
 # List the index
 setupindex() {
 	echo "<div class="indexul">" > ../permanav/index/content.htm;
-	for f in *; do #PREBERE MAPO PHOTOGRAPHY
-		#echo "<h3>${f}/</h3><ul>" >> ../permanav/index/content.htm;
+	for f in *; do 
 		uppercase=$(echo "$f" | tr 'a-z' 'A-Z')
 		echo "<ul><h3>${uppercase}</h3>" >> ../permanav/index/content.htm;
 		cd $f;
-		for f in *; do #ZDAJ PREBERE PODMAPO PHOTOGRAPHY
+		for f in *; do 
 			clean_name="${f//_/ }" 
-			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/index/content.htm; ##IN GENERIRA LINK PODMAPE
+			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/index/content.htm; 
 		done
 		cd ..
 		echo "</ul>" >> ../permanav/index/content.htm;
@@ -40,13 +39,12 @@ setupgungalarc() {
 		mkdir -p ../permanav/${categoryname}
 		echo "<ul>" > ../permanav/${categoryname}/content.htm
 		cd $f;
-		for f in *; do #ZDAJ GREV PODMAPO PHOTOGRAPHY
-			clean_name="${f//_/ }"  # Remove underscores
+		for f in *; do 
+			clean_name="${f//_/ }"  
 			echo "<li><a href='${site}/${f}.html'>${clean_name}</a></li>" >> ../../permanav/${categoryname}/content.htm; ##IN GENERIRA LINK PODMAPE
 		done
 		cd ..
 		echo "</ul>" >> ../permanav/${categoryname}/content.htm;
-		#začasen metagen za index_F
 		echo "<title>PIARHIJA - "${categoryname}"</title> <meta name='description' content='index of "${categoryname}"' />
 " >../permanav/${categoryname}/meta.htm;
 	echo "setup gungalarc -- DONE"
@@ -55,35 +53,27 @@ setupgungalarc() {
 
 sitenav() {
 	echo "<header><a href="home.html"><img src="../assets/logosmoll.png"></a></header><nav class='sitenav'><ul>" > ../inc/nav.htm;
-	#echo "<li><a href='home.html'>/PIARHIJA</a></li>" >> ../inc/nav.htm;
 	for f in *; do
 		if [ $f != 'index' ]; then
 			clean_name="${f//_/ }" 
 			echo "<li><a href='${f}.html'>${clean_name}</a></li>" >>../inc/nav.htm;
 		fi
 	done
-	#echo "<li><a href='index.html'>index</a></li>" >> ../inc/nav.htm;
 	echo "<li><a href='about.html'>about</a></li>" >> ../inc/nav.htm;
 	echo "</ul></nav>" >> ../inc/nav.htm;
 	echo "nav"
 }
 
-
 footy() {
 	datum=$(date +" %R %d-%m-%Y");
 	letina=$(date +%Y);
-	
-	#echo "<footer><a>Ganga 95© ${letina} </a> <a>Gangad: ${datum}</a></footer></main>" >../inc/footer.htm;
-
 	echo "<a>Modified: ${datum} </a>"  >../inc/footer.htm;
-
 }
+
 related() {
    if [ -f "related.txt" ] && [ -s "related.txt" ]; then
-        # Read the content of related.txt and create a link
         relatedLinks=$(cat related.txt)
         linksMarkup="<div class='related-links'> <b>Related:</b> "
-        # Loop through each link in related.txt
         IFS=',' read -ra LINKS <<< "$relatedLinks"
         for link in "${LINKS[@]}"; do
             link=$(echo "$link" | xargs)  # Remove any extra spaces
@@ -95,8 +85,6 @@ related() {
     fi
 }
 
-#!/bin/bash
-
 f="home"  # Set the folder name to "home"
 lastpost  # Call the function
 
@@ -104,21 +92,15 @@ lastpost() {
   if [ "$f" == "home" ]; then
     if [ -d "home" ]; then
       cd home || { echo "Failed to enter 'home' directory"; return 1; }
-
         if [ -f "content.htm" ] && [ -f "lastpost.txt" ]; then
-        # This removes the last line
         last_post_content=$(<lastpost.txt)
-
         sed -i '' '$d' "content.htm"  
-
         clean_name="${last_post_content//_/ }" 
-        # Append the new text
          echo "<p>Latest post:<a href="${last_post_content}.html">${clean_name}</a></p>" >> "content.htm"
         echo "Replaced the last line with new text in content.htm."
       else
         echo "'content.htm' does not exist in 'home' directory!"
       fi
-
       cd .. || { echo "Failed to go back to the parent directory"; return 1; }
     else
       echo "'home' directory does not exist!"
@@ -127,10 +109,6 @@ lastpost() {
     echo "The folder '$f' is not 'home'. No action taken."
   fi
 }
-
-
-
-
 
 # Setup topics
 cd $content
@@ -170,7 +148,6 @@ for f in *; do
 	footer=$(cat $foottop $foot $footbot);
 	closefile=$(cat $bottom);
 	mainContent="<main>${contentText}</main>";
-	
 	echo ${topPart}${nav}"${mainContent}"${sideBar}${footer}${closefile} > ../../$site/${f}.html
 	cd ..
 done

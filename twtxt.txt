@@ -17,3 +17,4 @@ nick = piarhija
 2025-02-09T18:42:38+01:00	 sarma na vrvici a
 2025-02-09T18:44:08+01:00	 miha reja a
 2025-02-09T18:47:28+01:00	 kako skuham sarmo oopis sarme
+2025-02-09T19:56:13+01:00	 ganga what is ganga
