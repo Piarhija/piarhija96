@@ -37,10 +37,7 @@ nav a { padding:0 4px}
 main { margin-left:30px;margin-right:30px;max-width:824px;clear:both;position:relative }
 main a { text-decoration:underline }
 
-main a[target="_blank"] { text-decoration-style:solid;}
 
-main a[target="_blank"]:before { content: '['; } 
-main a[target="_blank"]:after { content: ']'; }  
 
 
 
@@ -55,17 +52,12 @@ main ul, main ol { margin:0 0 30px 30px }
 main ul ul { margin-bottom:0 }
 main ul li a {text-decoration: none;}
 
-main > ul > li a:visited:before, main > ul > li a:visited:after { color: #fff; }
-main > ul > li a:before { content: '{'; }
-main > ul > li a:after { content: '}'; }
 
 .indexul {margin-left: -30px;}
 .indexul ul {display: inline-block;vertical-align: top; list-style: none;}
-.indexul li {margin-left: -10px;}
+.indexul li {margin-left: -5px;}
 
-.indexul > ul > li a:visited:before, .indexul > ul > li a:visited:after { color: #fff; }
-.indexul > ul > li a:before { content: '{'; }
-.indexul > ul > li a:after { content: '}'; }
+
 
 
 
@@ -102,8 +94,7 @@ div.codeview pre.src { background:#efefef;color:#000}
 div.codeview pre a { float:right;color:#FFC0CB;text-decoration:none;font-weight:bold }
 
 @media (prefers-color-scheme:dark) {
-	.indexul > ul > li a:visited:before, .indexul > ul > li a:visited:after { color: #000; }
-	main > ul > li a:visited:before, main > ul > li a:visited:after { color: #000; }
+	
 	* { color:#fff }
 	html {background-color: #625555;;background-repeat:repeat }
 	body { background:#000 }
