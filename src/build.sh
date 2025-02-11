@@ -67,7 +67,8 @@ sitenav() {
 footy() {
 	datum=$(date +" %R %d-%m-%Y");
 	letina=$(date +%Y);
-	echo "<a>Modified: ${datum} </a>"  >../inc/footer.htm;
+	#echo "<a>Modified: ${datum} </a>"  >../inc/footer.htm;
+	echo ""  >../inc/footer.htm;
 }
 
 related() {
@@ -85,8 +86,6 @@ related() {
     fi
 }
 
-f="home"  # Set the folder name to "home"
-lastpost  # Call the function
 
 lastpost() {
   if [ "$f" == "home" ]; then
