@@ -67,9 +67,13 @@ sitenav() {
 footy() {
 	datum=$(date +" %R %d-%m-%Y");
 	letina=$(date +%Y);
-	#echo "<a>Modified: ${datum} </a>"  >../inc/footer.htm;
-	echo ""  >../inc/footer.htm;
+	echo "<div class="right"><a>Modified: ${datum} </a></div>"  >../inc/footer.htm;
+	
 }
+
+
+	
+
 
 related() {
    if [ -f "related.txt" ] && [ -s "related.txt" ]; then
