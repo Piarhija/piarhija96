@@ -130,7 +130,71 @@ echo "${tally} topics built"
 
 
     </pre>
-   
+<p>This is the code of build.sh script that builds the website. There is also this script that helps me make new entries on the website.</p>
+ 
+<pre class="language-sh"><code class="language-sh"></code>
 
-	<q>I had so much fun making this website</q>
-    <div class='related-links'> <b>Related:</b> <a href="wiki_notes.html">wiki notes</a> </div></main><footer><span> <a href="https://tech.lgbt/@pia">Mastodon</a>| <a href="index.html">Webring</a>| <a href="https://piarhija.bandcamp.com">Bandcamp</a>| <a href="https://www.youtube.com/@piarhija">Youtube</a>| <a href=index.html>index</a>| <a href=../twtxt.txt>twxtx</a> <div class=right><a>Modified: 11:28 16-02-2025 </a></div> </span> <hr/> </footer></body> </html>
+	#!/bin/sh -e
+# Define the parent directory where all maps (topics) are located
+
+
+function wheretopic() {
+	
+echo "Where is the topic located?"
+read topic_name
+
+# Construct the full path to the directory
+topic_path="$topic_name"
+
+# Check if the directory exists
+if [ -d "$topic_path" ]; then
+    # Navigate to the directory
+    cd "$topic_path"
+    echo "Navigated to $topic_path"
+else
+    # Print error if the directory does not exist
+    echo "Topic '$topic_name' not found."
+fi
+
+
+
+}
+
+
+read -p "Topic Name: " name;
+slug=$(echo "${name}" | tr '[:upper:]' '[:lower:]' | tr ' ' '_')
+if test -d slug; then
+	echo "Topic already exists"
+else
+	read -p "Topic Description: " description;
+	cd content;
+	wheretopic;
+	mkdir $slug;
+	cd $slug;
+	touch content.htm
+	echo "&lt;h3>${name}&lt;/h3>" > content.htm
+	touch meta.htm
+	echo "&lt;title>PIARHIJA - ${name}&lt;/title>&lt;meta name='description' content='${description}' />" > meta.htm
+	echo "$(date +%d-%m-%Y)" > date.txt
+	
+	touch related.txt;
+
+	#twtxt
+	cd ../../../../ ;
+	current_time=$(date +"%Y-%m-%dT%H:%M:%S"+01:00)
+	# Output the result
+	echo "${current_time}	 ${name} ${description}" >> twtxt.txt
+	cd src/permanav/home;
+	
+	echo "${name// /_}" > lastpost.txt #write name, repalce space with _
+	fi
+
+	</pre>
+
+	<p>It also includes date.txt and related.txt inside the map. Currently, I do not do anything with date.txt. Furthermore, it appends the tw.txt file with the name of the topic and meta description.</p>
+	<p>I know the scripts need a lot of improvement, but this is only version 0.7 of this website.</p>
+	
+
+	<q>I have gone trough multiple websites during the years. But i feel this one is the one. <br>
+	I had so much fun making this.</q>
+    <div class='related-links'> <b>Related:</b> <a href="wiki_notes.html">wiki notes</a> </div></main><footer><span> <a href="https://tech.lgbt/@pia">Mastodon</a>| <a href="index.html">Webring</a>| <a href="https://piarhija.bandcamp.com">Bandcamp</a>| <a href="https://www.youtube.com/@piarhija">Youtube</a>| <a href=index.html>index</a>| <a href=../twtxt.txt>twxtx</a> <div class=right><a>Modified: 16:43 16-02-2025 </a></div> </span> <hr/> </footer></body> </html>
