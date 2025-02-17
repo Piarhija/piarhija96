@@ -9,11 +9,13 @@ table td, table th { vertical-align:top;padding:2.5px 5px;text-align:left }
 table td > pre, table th > pre { background:none;padding:0;margin:0 }
 table tr img { margin-bottom:0; display:block }
 hr { clear:both;border:0 }
-header { float:left;margin:20px 15px 15px 30px ;padding:20px 15px 15px 15px  ;}
-header img { display:block }
-header img:hover { filter:invert(1) hue-rotate(180deg); background-color: #fff; }
+
+
+nav img { display:block ;float:left; height: 20px;}
+nav img:hover { filter:invert(1) hue-rotate(180deg); background-color: #fff; }
+
 nav { padding:20px 25px 30px;margin:0;text-transform: uppercase;}
-nav li{list-style-type: none;}
+nav li{list-style-type: none; display: inline}
 nav a { padding:0 4px}
 main { margin-left:30px;margin-right:30px;max-width:824px;clear:both;position:relative }
 main a { text-decoration:underline }
@@ -71,5 +73,6 @@ div.codeview pre a { float:right;color:#FFC0CB;text-decoration:none;font-weight:
 	main {margin-right: 5px; margin-left: 5px;}
 	body {margin: 0;}
 	footer {margin-left: 5px; margin-right: 5px;}
-	header {margin-left: 0px;padding-left: 5px;}
+	nav {padding-left: 5px;}
+
   }

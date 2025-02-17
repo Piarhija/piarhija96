@@ -52,7 +52,7 @@ setupgungalarc() {
 }
 
 sitenav() {
-	echo "<header><a href="home.html"><img src="../assets/logosmoll.png"></a></header><nav class='sitenav'><ul>" > ../inc/nav.htm;
+	echo "<nav class='sitenav'><ul><li><a href="home.html"><img src="../assets/logosmoll.png"></a></li>" > ../inc/nav.htm;
 	for f in *; do
 		if [ $f != 'index' ]; then
 			clean_name="${f//_/ }" 
