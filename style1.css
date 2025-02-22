@@ -1,5 +1,5 @@
 * { margin:0;padding:0;text-decoration:none;box-sizing:border-box;color:#000 }
-html {background-color: #907777;}
+html {background-color: #ecebea;}
 body {margin: 0; background:#fff;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:16px;overflow-x:hidden }
 body > *, body main > *, main figure > div > *, main p, main q, main cite, main pre { margin-bottom:30px }
 body .right { float:right }
@@ -56,7 +56,7 @@ div.codeview pre a { float:right;color:#FFC0CB;text-decoration:none;font-weight:
 
 @media (prefers-color-scheme:dark) {
 	* { color:#fff }
-	html {background-color: #625555;;background-repeat:repeat }
+	html {background-color: #1b1b1b;;background-repeat:repeat }
 	body { background:#000 }
 	main a:hover, main a:hover > *, nav a:hover, nav a:hover > * { background-color:#fff;color:#000;text-decoration:none }
 	input { color:#000 }
